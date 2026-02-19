@@ -1,0 +1,115 @@
+.credit-card {
+    background: linear-gradient(135deg, #d4a017 0%, #e8b923 40%, #c4941a 100%);
+    border-radius: 18px;
+    padding: 22px 24px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    min-height: 160px;
+    box-shadow: 0 8px 32px rgba(212, 160, 23, 0.35);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: -40px;
+        right: -40px;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.08);
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -30px;
+        left: -30px;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.05);
+    }
+}
+
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+    z-index: 1;
+}
+
+.card-label-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.name-label {
+    font-size: 10px;
+    opacity: 0.7;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.cardholder-name {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.visa-logo {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    font-style: italic;
+    opacity: 0.9;
+}
+
+.card-number {
+    font-size: 18px;
+    letter-spacing: 3px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    position: relative;
+    z-index: 1;
+
+    .dots {
+        opacity: 0.7;
+    }
+
+    .last-four {
+        font-weight: 700;
+    }
+}
+
+.card-bottom {
+    display: flex;
+    gap: 28px;
+    position: relative;
+    z-index: 1;
+}
+
+.card-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+
+    .detail-label {
+        font-size: 8px;
+        opacity: 0.6;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .detail-value {
+        font-size: 13px;
+        font-weight: 600;
+    }
+}

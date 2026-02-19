@@ -1,0 +1,40 @@
+<div class="sidebar">
+  <!-- Logo -->
+  <div class="logo">
+    <div class="logo-circle">
+      <mat-icon>sync</mat-icon>
+    </div>
+  </div>
+
+  <!-- Top Navigation Icons -->
+  <nav class="nav-icons">
+    @for (item of topNavItems; track item.id) {
+      <button
+        mat-icon-button
+        [class.active]="activeNav === item.id"
+        (click)="setActive(item.id)"
+        [matTooltip]="item.label"
+        matTooltipPosition="right">
+        <mat-icon>{{ item.icon }}</mat-icon>
+      </button>
+    }
+  </nav>
+
+  <!-- Menu Items -->
+  <div class="menu-items">
+    @for (item of menuItems; track item.label) {
+      <button class="menu-item" mat-button>
+        <div class="menu-icon-wrapper">
+          <mat-icon>{{ item.icon }}</mat-icon>
+        </div>
+        <span class="menu-label">{{ item.label }}</span>
+        <mat-icon class="chevron">chevron_right</mat-icon>
+      </button>
+    }
+  </div>
+
+  <!-- FAB -->
+  <button class="fab-add" mat-fab color="primary">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
