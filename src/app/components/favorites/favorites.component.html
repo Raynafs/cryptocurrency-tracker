@@ -1,0 +1,34 @@
+<div class="favorites">
+    <div class="favorites-header">
+        <h3>Favorites</h3>
+        <a class="see-all" href="#">See All</a>
+    </div>
+    <div class="favorites-cards">
+        @for (crypto of favorites; track crypto.ticker) {
+        <div class="favorite-card">
+            <div class="crypto-header">
+                <div class="crypto-icon" [style.background]="crypto.iconColor + '18'">
+                    <mat-icon [style.color]="crypto.iconColor">{{ crypto.icon }}</mat-icon>
+                </div>
+                <div class="crypto-name">
+                    <span class="ticker">{{ crypto.ticker }}</span>
+                    <span class="name">{{ crypto.name }}</span>
+                </div>
+            </div>
+            <div class="sparkline-container">
+                <svg viewBox="0 0 80 30" preserveAspectRatio="none">
+                    <path [attr.d]="getSparklinePath(crypto.sparklineData)" fill="none"
+                        [attr.stroke]="crypto.change >= 0 ? '#10b981' : '#ef4444'" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </div>
+            <div class="crypto-price">
+                <span class="price">{{ formatPrice(crypto.price) }}</span>
+                <span class="change" [class.positive]="crypto.change >= 0" [class.negative]="crypto.change < 0">
+                    {{ crypto.change >= 0 ? '+' : '' }}{{ crypto.change }}%
+                </span>
+            </div>
+        </div>
+        }
+    </div>
+</div>

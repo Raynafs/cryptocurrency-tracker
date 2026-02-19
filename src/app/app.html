@@ -1,0 +1,32 @@
+<div class="dashboard-layout">
+  <!-- Left Sidebar -->
+  <app-sidebar></app-sidebar>
+
+  <!-- Center Main Content -->
+  <main class="main-content">
+    <app-header></app-header>
+    <app-financial-cards></app-financial-cards>
+    <app-activity-summary></app-activity-summary>
+  </main>
+
+  <!-- Right Panel -->
+  <aside class="right-panel">
+    <div class="right-panel-header">
+      <div class="brand">
+        <h2>Shakirium Crypto</h2>
+        <span class="brand-subtitle">Increase your profit</span>
+      </div>
+      <div class="right-actions">
+        <button mat-icon-button>
+          <mat-icon>search</mat-icon>
+        </button>
+        <button mat-icon-button>
+          <mat-icon>notifications_none</mat-icon>
+        </button>
+      </div>
+    </div>
+    <app-portfolio-card></app-portfolio-card>
+    <app-favorites></app-favorites>
+    <app-live-prices></app-live-prices>
+  </aside>
+</div>

@@ -1,0 +1,26 @@
+<div class="cards-row">
+    <!-- First two stat cards -->
+    <div class="stat-card" *ngFor="let card of cards.slice(0, 2)">
+        <div class="card-icon" [style.background]="card.iconBgColor">
+            <mat-icon [style.color]="card.iconColor">{{ card.icon }}</mat-icon>
+        </div>
+        <div class="card-info">
+            <span class="card-label">{{ card.label }}</span>
+            <span class="card-amount">${{ formatAmount(card.amount) }}</span>
+        </div>
+    </div>
+
+    <!-- Credit Card Widget -->
+    <app-credit-card></app-credit-card>
+
+    <!-- Last two stat cards -->
+    <div class="stat-card" *ngFor="let card of cards.slice(2, 4)">
+        <div class="card-icon" [style.background]="card.iconBgColor">
+            <mat-icon [style.color]="card.iconColor">{{ card.icon }}</mat-icon>
+        </div>
+        <div class="card-info">
+            <span class="card-label">{{ card.label }}</span>
+            <span class="card-amount">${{ formatAmount(card.amount) }}</span>
+        </div>
+    </div>
+</div>

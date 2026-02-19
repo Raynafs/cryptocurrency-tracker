@@ -1,0 +1,79 @@
+<div class="activity-summary">
+    <!-- Main Tabs -->
+    <div class="main-tabs">
+        <button class="main-tab active">ACTIVITY SUMMARY</button>
+        <button class="main-tab">SPENDING SUMMARY</button>
+        <button class="main-tab">INCOME SUMMARY</button>
+    </div>
+
+    <div class="activity-content">
+        <!-- Left: Activity Graph -->
+        <div class="graph-section">
+            <div class="graph-header">
+                <div>
+                    <span class="graph-label">Activity Graph</span>
+                    <span class="graph-amount">$186k</span>
+                </div>
+                <span class="graph-period">BETWEEN SEP 9 - 27</span>
+            </div>
+            <div class="chart-container">
+                <canvas baseChart [type]="barChartType" [data]="barChartData" [options]="barChartOptions">
+                </canvas>
+            </div>
+        </div>
+
+        <!-- Right: Transaction List -->
+        <div class="transaction-section">
+            <!-- Sub-tabs -->
+            <div class="sub-tabs">
+                <div class="tab-buttons">
+                    <button class="sub-tab" [class.active]="activeTab === 'history'" (click)="activeTab = 'history'">
+                        History
+                    </button>
+                    <button class="sub-tab" [class.active]="activeTab === 'upcoming'" (click)="activeTab = 'upcoming'">
+                        Upcoming
+                    </button>
+                </div>
+                <div class="tab-actions">
+                    <div class="date-range">
+                        <mat-icon>calendar_today</mat-icon>
+                        <span>6 Sep 20 - 13 Sep 20</span>
+                    </div>
+                    <button mat-icon-button class="settings-btn">
+                        <mat-icon>settings</mat-icon>
+                    </button>
+                    <button mat-mini-fab class="add-btn" color="primary">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Transaction Groups -->
+            <div class="transaction-list">
+                @for (group of getTransactionGroups(); track group.date) {
+                <div class="transaction-group">
+                    <span class="group-date">{{ group.date }}</span>
+                    @for (txn of group.transactions; track txn.name) {
+                    <div class="transaction-row">
+                        <div class="txn-icon">
+                            <mat-icon>{{ txn.icon }}</mat-icon>
+                        </div>
+                        <div class="txn-info">
+                            <span class="txn-name">{{ txn.name }}</span>
+                            <span class="txn-date">{{ txn.date }}</span>
+                        </div>
+                        <div class="txn-category">
+                            <span class="category-dot" [style.background]="txn.categoryColor"></span>
+                            <span class="category-label">{{ txn.categoryLabel }}</span>
+                        </div>
+                        <span class="txn-amount" [class.positive]="txn.isPositive" [class.negative]="!txn.isPositive">
+                            {{ formatAmount(txn.amount, txn.isPositive) }}
+                        </span>
+                    </div>
+                    }
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

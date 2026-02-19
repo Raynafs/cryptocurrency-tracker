@@ -1,0 +1,29 @@
+<div class="live-prices">
+    <h3>Live Prices</h3>
+    <div class="price-list">
+        @for (crypto of prices; track crypto.ticker + crypto.name) {
+        <div class="price-row">
+            <div class="crypto-icon" [style.background]="crypto.iconColor + '18'">
+                <mat-icon [style.color]="crypto.iconColor">{{ crypto.icon }}</mat-icon>
+            </div>
+            <div class="crypto-info">
+                <span class="name">{{ crypto.name }}</span>
+                <span class="ticker">{{ crypto.ticker }}</span>
+            </div>
+            <div class="sparkline">
+                <svg viewBox="0 0 60 24" preserveAspectRatio="none">
+                    <path [attr.d]="getSparklinePath(crypto.sparklineData)" fill="none"
+                        [attr.stroke]="crypto.change >= 0 ? '#10b981' : '#ef4444'" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </div>
+            <div class="price-info">
+                <span class="price">{{ formatPrice(crypto.price) }}</span>
+                <span class="change" [class.positive]="crypto.change >= 0" [class.negative]="crypto.change < 0">
+                    {{ crypto.change >= 0 ? '+' : '' }}{{ crypto.change }}%
+                </span>
+            </div>
+        </div>
+        }
+    </div>
+</div>
